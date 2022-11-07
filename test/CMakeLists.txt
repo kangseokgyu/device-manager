@@ -1,13 +1,12 @@
 include(FetchContent)
 FetchContent_Declare(gtest
   GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG        release-1.10.0
+  GIT_TAG        release-1.12.1
 )
 
 FetchContent_MakeAvailable(gtest)
 
 add_executable(unit_test
-  sample_add.cpp
 )
 
 target_include_directories(unit_test
@@ -18,14 +17,5 @@ target_include_directories(unit_test
 
 target_link_libraries(unit_test
   PRIVATE
-    sample
     gtest_main
-)
-
-include(GoogleTest)
-gtest_discover_tests(unit_test
-  PROPERTIES
-    LABELS "unit"
-  DISCOVER_TIMEOUT
-    240
 )
